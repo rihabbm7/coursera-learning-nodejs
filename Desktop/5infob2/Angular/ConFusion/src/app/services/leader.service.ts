@@ -5,14 +5,25 @@ import {leaders} from '../Shared/leaders';
   providedIn: 'root'
 })
 export class LeaderService {
-getLeaders():Promise<Leader[]>{
-  return Promise.resolve(leaders);
-}
-getleader(id: number): Promise<Leader> {
-  return Promise.resolve(leaders.filter((leader) => (leader.id ==id))[0]);
-}
-getFeaturedLeader():Promise<Leader>{
-return Promise.resolve(leaders.filter((leader) => leader.featured)[0]);
-}
+  getLeaders(): Promise<Leader[]> {
+    return new Promise(resolve=> {
+      // Simulate server latency with 2 second delay
+        setTimeout(() => resolve(leaders), 2000);
+    });
+  }
+
+  getleader(id: string): Promise<Leader> {
+    return new Promise(resolve=> {
+      // Simulate server latency with 2 second delay
+        setTimeout(() => resolve(leaders.filter((leader) => (leader.id === id))[0]), 2000);
+    });
+  }
+
+  getFeaturedLeader(): Promise<Leader> {
+    return  new Promise(resolve=> {
+      // Simulate server latency with 2 second delay
+        setTimeout(() => resolve(leaders.filter((leader) => leader.featured)[0]), 2000);
+    });
+  }
   constructor() { }
 }
