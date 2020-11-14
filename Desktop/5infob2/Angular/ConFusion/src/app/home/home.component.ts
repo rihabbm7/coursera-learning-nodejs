@@ -17,14 +17,16 @@ export class HomeComponent implements
   promotion: Promotion;
   leader:Leader;
 
-  constructor(private dishservice: DishService,
+  constructor(private dishService: DishService,
     private promotionservice: PromotionService,
     private leaderService:LeaderService) { }
 
   ngOnInit() {
-    this.dish = this.dishservice.getFeaturedDish();
+    this.dishService.getFeaturedDish()
+      .then(dishes => this.dish  = dishes);
     this.promotion = this.promotionservice.getFeaturedPromotion();
-    this.leader=this.leaderService.getFeaturedLeader();
+    this.leaderService.getFeaturedLeader()
+    .then(leader =>  this.leader = leader);
   }
 
 }

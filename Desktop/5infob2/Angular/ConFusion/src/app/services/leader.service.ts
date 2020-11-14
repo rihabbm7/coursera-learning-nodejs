@@ -5,11 +5,14 @@ import {leaders} from '../Shared/leaders';
   providedIn: 'root'
 })
 export class LeaderService {
-getLeaders():Leader[]{
-  return leaders;
+getLeaders():Promise<Leader[]>{
+  return Promise.resolve(leaders);
 }
-getFeaturedLeader():Leader{
-return leaders.filter((leader) => leader.featured)[0];
+getleader(id: number): Promise<Leader> {
+  return Promise.resolve(leaders.filter((leader) => (leader.id ==id))[0]);
+}
+getFeaturedLeader():Promise<Leader>{
+return Promise.resolve(leaders.filter((leader) => leader.featured)[0]);
 }
   constructor() { }
 }
