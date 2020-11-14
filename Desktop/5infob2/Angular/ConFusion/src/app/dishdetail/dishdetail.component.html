@@ -23,6 +23,8 @@
 
             </mat-card-content>
             <mat-card-actions>
+              <button mat-button (click)="goBack()">BACK</button>
+
                 <button mat-button>LIKE</button>
                 <button mat-button>SHARE</button>
               </mat-card-actions>
@@ -44,7 +46,6 @@
                         <span> {{comment.rating}} Stars </span>
                       </p>
                       <p matLine>
-                        <span> -- {{comment.author}} {{comment.date | date}} </span>
 
                       </p>
                     </mat-list-item>
